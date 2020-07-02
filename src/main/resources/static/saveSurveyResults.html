@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take a Look at Your Surveys</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/saveSurveyResults.css">
+</head>
+<body>
+<h1>Survey Report</h1>
+<input type="button" id="excel" value="Excel" >
+
+<div id="filterMenu">
+
+    <select id="surveyName" >
+        <option value="" disabled selected>Survey Name</option>
+    </select>
+
+    <div id="dates">
+        <div id="startDate">
+            <label for="date1" >Start Date</label>
+            <input type="date" id="date1" name="startDate">
+        </div>
+        <div id="endDate">
+            <label for="date2" >End Date</label>
+            <input type="date" id="date2" name="endDate">
+        </div>
+    </div>
+
+    <div id="ages">
+        <div id="startAge">
+            <label for="age1" >Age Starts</label>
+            <input type="number" id="age1" name="Age Starts">
+        </div>
+        <div id="endAge">
+            <label for="age2" >Age Ends</label>
+            <input type="number" id="age2" name="Age Ends">
+        </div>
+    </div>
+
+    <button id="filterBtn">Filter</button>
+
+</div>
+
+<table>
+    <tr>
+        <th id="name">Name</th>
+        <th id="id">Age</th>
+        <th id="edit">Education</th>
+        <th id="delete">View Survey</th>
+    </tr>
+
+</table>
+
+
+<script src="saveSurveyResults.js"></script>
+
+</body>
+</html>

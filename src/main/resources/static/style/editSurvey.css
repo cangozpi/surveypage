@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgba(3, 61, 71, 0.315);
+}
+
+.contentBody {
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    margin: 10vh 17vw;
+    display: inline-block;
+}
+
+input[type=submit] {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    right: 0;
+    margin: 10vh 15vw;
+    width: 15vw;
+    min-height: 40px;
+    height: 8vh;
+}
+
+.name, .questions, .selectedQuestions{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10vh;
+    width: 50vw;
+    max-width: 450px;
+    position: relative;
+}
+
+
+
+.selectedQuestions {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50vw;
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+
+}
+
+input[type=checkbox] {
+    margin-bottom: 3vh;
+    margin-right: 7px;
+
+}
+
+.selectedQuestions label {
+    margin-right: 5vw;
+}
+
+.dropMenu {
+    display: inline;
+}
+
+
+#name, #questions{
+    float: right;
+}
+
+#dropMenu {
+    position: absolute;
+    right: 0;
+    width: 166px;
+    border: 1px solid black;
+    z-index: 111110;
+    background-color: rgba(248, 252, 253, 0.92);
+}
+
+#dropMenu p {
+    padding-top: 7px;
+    border-bottom: 1px solid black;
+}
+
+#dropMenu p:last-child{
+    border-bottom: unset;
+}
+
+#dropMenu p:hover {
+    background-color: rgb(129, 168, 50);
+}
+
+#dropMenu{
+    visibility: hidden;
+}
+
+/*Hidden button to sen surveyId with the form*/
+#id-sender{
+    display: none;
+}

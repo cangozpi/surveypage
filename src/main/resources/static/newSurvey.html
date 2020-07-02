@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Survey</title>
+    <link rel="stylesheet" href="/style/newSurvey.css">
+</head>
+<body>
+
+    <h1>New Survey</h1>
+
+    <form class="contentBody" method="POST" action="/newSurvey">
+        <div class="name">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div class="questions">
+            <label for="questions">Questions</label>
+            <div class="dropMenu">
+                <input type="search" id="questions" placeholder="Search ...">
+                <div id="dropMenu">
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="selectedQuestions">
+            <label for="selectedQuestions">selectedQuestions</label>
+            
+            <div class="checkboxes">
+
+            </div>
+        
+
+            </div>            
+        </div>
+        <input type="submit" value="Save"> 
+    </form>
+    
+    <script src="newSurvey.js"></script>
+
+</body>
+</html>

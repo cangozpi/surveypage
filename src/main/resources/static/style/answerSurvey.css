@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 20px;
+    background-color: rgba(3, 61, 71, 0.315);
+}
+
+h1 {
+    margin: 3vw 15vh;
+}
+
+.QuestionsContainer {
+    width: 60vw;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10vh 10vh;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: rgba(238, 242, 243, 0.42);
+}
+
+.questionRow{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10vh;
+}
+
+.questionRow input,.questionRow select {
+    width: 40vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+}
+
+hr{
+    margin-top: 5vh;
+}
+
+input[type=submit] {
+    position: absolute;
+    right: 0;
+    margin-top: 10vh;
+    margin-right: 10vw;
+    margin-bottom: 20vh;
+    width: 15vw;
+    height: 8vh;
+}
+
+#hide {
+    display: none;
+}
+
+/*for sending surveyName*/
+#surveyNameInput{
+    display: none;
+}

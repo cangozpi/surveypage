@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Survey</title>
+    <link rel="stylesheet" href="/style/editSurvey.css">
+</head>
+<body>
+
+<h1>Edit Survey</h1>
+
+<form class="contentBody" method="POST" action="/editSurvey">
+    <div class="name">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+    </div>
+    <div class="questions">
+        <label for="questions">Questions</label>
+        <div class="dropMenu">
+            <input type="search" id="questions" placeholder="Search ...">
+            <div id="dropMenu">
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="selectedQuestions">
+        <label for="selectedQuestions">selectedQuestions</label>
+
+        <div class="checkboxes">
+
+        </div>
+
+
+    </div>
+    </div>
+    <input type="submit" value="Save Changes">
+    <input type="text" name="surveyId" id="id-sender">
+</form>
+
+<script src="editSurvey.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Fill Survey</title>
+    <link rel="stylesheet" href="/style/answerSurvey.css">
+ </head>
+ <body>
+
+    <h1 id="surveyName"></h1>
+
+    <form method="POST" action="/saveSurveyResults">
+        <div class="QuestionsContainer">
+
+            <div class="questionRow">
+                <input id="surveyNameInput" name="surveyName" type="text">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name">
+                <hr>
+            </div>
+
+            <div class="questionRow">
+                <label for="education">Highest Level of Education</label>
+                <select name="education" id="education">
+                    <option value="someHighSchool">Some High School</option>
+                    <option value="GED">Some High School Diploma/ GED</option>
+                    <option value="someCollege">Some College</option>
+                    <option value="associatesDegree">Associate Degree</option>
+                    <option value="bachelorsDegree">Bachelor'Degree</option>
+                    <option value="mastersDegree">Master's Degree or Higher</option>
+                </select>
+                <hr>
+            </div>
+
+            <div class="questionRow">
+                <label for="birthdate">Birth Date</label>
+                <input type="date" name="birthdate" id="birthdate">
+                <hr>
+            </div>
+
+            <div class="questionRow" id="hide">
+                <label for="fillDate">fill Date</label>
+                <input type="date" name="fillDate" id="fillDate">
+                <hr>
+            </div>
+
+
+
+        </div>
+
+        <input type="submit" value="Save">
+
+    </form>
+
+ <script src="answerSurvey.js"></script>
+
+ </body>
+ </html>

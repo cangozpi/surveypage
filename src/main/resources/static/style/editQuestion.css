@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 0.6vw;
+    font-family: sans-serif;
+    outline: none;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/images/editPageBackground.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    color: rgba(226, 219, 219, 0.795);
+    font-weight: bold;    
+}
+
+.all {
+    
+    background-color: rgba(110, 107, 99, 0.452);
+    height: 100vh;
+}
+
+h1{
+    font-size: 4vw;
+    position: absolute;
+    width: 100vw;
+    margin-left: auto;
+    padding-top: 10vh;
+    font-family: 'Holtwood One SC', serif;
+    letter-spacing: 13px;
+}
+
+.form {
+    width: 80vw;
+    height: 80vh;
+    margin:auto;
+    padding-top: 15vh;
+
+}
+
+form{
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 5vh;
+    padding-right: 18vw;
+}
+
+form label{
+    flex-basis: 50%;
+    margin-left: 0px;
+    margin: 4vh 0vw;
+    align-self: center;
+}
+
+input, select, textarea {
+    width: 30vw;
+    height: 5vh;
+    margin: 4vh 0vw;
+}
+
+select, input[type=submit]{
+    cursor: pointer;
+}
+
+textarea input{
+    cursor: text;
+}
+
+textarea:hover, select:hover, input:hover{
+    background-color: rgba(167, 136, 36, 0.411);
+    box-shadow: 3px 3px black;
+}
+option{
+    font-style: italic;
+}
+
+input[type=submit]:hover {
+    background-color:rgb(144, 144, 150);
+    box-shadow: 1px 2px rgb(41, 41, 43);
+    color: whitesmoke;
+}
+
+input[type=submit]{
+    display: block;
+    position: absolute;
+    bottom: 13vh;
+    right: 11vw;
+    width: 12vw;
+}
+
+textarea{
+    height: 20vh;
+}
