@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.example.questions.model.ApplicationUserModel" %><%
-//    ApplicationUserModel user = (ApplicationUserModel) request.getAttribute("user");
-%>
+<%@ page import="com.example.questions.model.ApplicationUserModel" %>
+<%ApplicationUserModel user = (ApplicationUserModel) request.getAttribute("user");%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +14,19 @@
 </head>
 <body>
 <header>
-    <a href="/register" id="singIn">Sign in</a>
-    <a href="/login" id="login">Login</a><a href="/logout" id="logOut">LogOut</a>
 
-    <%-- if(user != null && user.getRole().equals("ROLE_ADMIN")) { %>
+    <% if(user == null){ %>
+
+    <a href="/register" id="singIn">Sign in</a>
+    <a href="/login" id="login">Login</a>
+
+    <% } %>
+
+    <% if(user != null) { %>
+        <a href="/logout" id="logOut">LogOut</a>
+    <% } %>
+
+<%-- if(user != null && user.getRole().equals("ROLE_ADMIN")) { %>
         <input type="button" value="Admin button" />
     <% } --%>
 

@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ApplicationUserRepository extends MongoRepository<ApplicationUserModel,String> {
     public ApplicationUserModel findByUserName(@Param("userName")String userName);
-
+    public void deleteByUserName(@Param("userName") String userName);
 }
