@@ -3,15 +3,14 @@ package com.example.questions.service;
 import com.example.questions.dao.ApplicationUserRepository;
 import com.example.questions.model.ApplicationUserModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
+
+import java.util.List;
 
 @Service
 public class ApplicationUserService implements UserDetailsService {
@@ -30,7 +29,7 @@ public class ApplicationUserService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
-        return new User(user.getUserName(), user.getPassword(), Arrays.asList(new SimpleGrantedAuthority(user.getRole())));
+        return user;
 
     }
 
@@ -38,4 +37,10 @@ public class ApplicationUserService implements UserDetailsService {
         ApplicationUserModel newUser = new ApplicationUserModel(username, passwordEncoder.encode(password),"ROLE_SURVEYCREATOR");
         applicationUserRepository.save(newUser);
     }
+
+    //Get All available users as List<ApplicationUserModel>
+    public List<ApplicationUserModel> getAllUsers(){
+        return applicationUserRepository.findAll();
+    }
+
 }
