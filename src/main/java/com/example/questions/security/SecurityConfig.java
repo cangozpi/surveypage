@@ -20,22 +20,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable() //TODO: disable csrf and make /register Page work
                 .authorizeRequests()
-                .antMatchers("/","/answerSurvey.htm").permitAll()
-                .antMatchers("/questions.html").hasAnyRole("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
-                .antMatchers("/createSurvey.html").hasAnyRole("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
-                .antMatchers("/answerSurveyHome.html").hasAnyRole("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
-                .antMatchers("/saveSurveyResults.html").hasAnyRole("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
+                .antMatchers("/","/answerSurvey.html","/register").permitAll()
+                .antMatchers("/questions.html").hasAnyAuthority("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
+                .antMatchers("/createSurvey.html").hasAnyAuthority("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
+                .antMatchers("/answerSurveyHome.html").hasAnyAuthority("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
+                .antMatchers("/saveSurveyResults.html").hasAnyAuthority("ROLE_ADMIN", "ROLE_SURVEYCREATOR")
+                .anyRequest().permitAll()
                 .and()
-                .formLogin();
-                /* .loginPage()
-                .loginProcessingUrl()
-                .defaultSuccessUrl()
+                .formLogin().permitAll()
+                //.loginPage()
+                //.loginProcessingUrl()
+               // .defaultSuccessUrl()
                 .and()
-                .logout()
-                .logoutUrl()
-                .deleteCookies()
-            */
+                .logout().permitAll()
+               // .logoutUrl()
+                .deleteCookies();
+
 
     }
 

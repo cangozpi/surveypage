@@ -85,7 +85,6 @@ public class SurveyController {
     //Edit survey retrieving prior survey data
     @GetMapping("/answerSurvey")
     @ResponseBody
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public Optional<SurveyModel> answerSurvey(@RequestParam String id){
         return surveyService.getSurvey(id);
     }

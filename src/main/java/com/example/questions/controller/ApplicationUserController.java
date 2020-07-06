@@ -1,10 +1,23 @@
 package com.example.questions.controller;
 
-import org.springframework.stereotype.Controller;
+import com.example.questions.service.ApplicationUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
-@Controller
+@RestController
 public class ApplicationUserController {
 
+    @Autowired
+    ApplicationUserService applicationUserService;
+
+    @PostMapping("/register")
+    public RedirectView registerNewUser(@RequestParam String username, @RequestParam String password){
+        applicationUserService.saveNewUser(username, password);
+        return new RedirectView("/");
+    }
 
 
 }

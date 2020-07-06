@@ -18,10 +18,9 @@ public class AnsweredSurveyController {
 
     //Handles post operation of answerSurvey form
     @PostMapping("/saveSurveyResults")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public RedirectView saveSurveyResults(@RequestParam Map<String,String> questions){
         answeredSurveyService.answeredSurveyModel(questions);
-        return new RedirectView("saveSurveyResults.html");
+        return new RedirectView("answerSaved.html");
     }
 
     //to get all of the AnsweredSurveyModel's that are in the db

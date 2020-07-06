@@ -40,7 +40,7 @@ body{
 .welcome-script h1 {
     font-size: 8vw;
     font-family: 'Piedra', cursive;
-    font-weight: 10;
+   /* font-weight: 10; */
     opacity: 100;
     
 }
@@ -135,3 +135,41 @@ body{
     display: inline-block;
 }
 
+/* Header*/
+header {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-style: oblique;
+    background-color: rgba(73, 72, 68, 0.53);
+}
+
+#singIn{
+    border: 1px solid #3e3e3e;
+    text-decoration: none;
+    margin: 10px;
+    padding:5px;
+    background-color: rgba(201, 199, 197, 0.49);
+}
+
+#login{
+    border: 1px solid #3e3e3e;
+    text-decoration: none;
+    margin: 10px;
+    padding:5px;
+    background-color: rgba(201, 199, 197, 0.49);
+}
+
+#logOut{
+    border: 1px solid #3e3e3e;
+    text-decoration: none;
+    margin: 10px;
+    padding:5px;
+    background-color: rgba(201, 199, 197, 0.49);
+}
+
+#logOut:hover, #login:hover, #singIn:hover {
+    background-color: rgba(160, 156, 153, 0.49);
+    box-shadow: 2px 2px black;
+}

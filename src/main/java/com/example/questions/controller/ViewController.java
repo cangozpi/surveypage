@@ -31,5 +31,12 @@ public class ViewController {
         model.addAttribute("ids",viewService.getAnsweredSurveyModelsbyId(ids));
         return "excelTablePage";
     }
-    
+
+    //Handles sign in page
+    @GetMapping("/register")
+    public String signInPageJSP(){
+        return "signin";
+    }
+
+
 }

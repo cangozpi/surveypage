@@ -9,8 +9,7 @@ public class ApplicationUserModel {
     private String password;
     private String role;
 
-    public ApplicationUserModel(String id, String userName, String password, String role) {
-        Id = id;
+    public ApplicationUserModel(String userName, String password, String role) {
         this.userName = userName;
         this.password = password;
         this.role = role;
