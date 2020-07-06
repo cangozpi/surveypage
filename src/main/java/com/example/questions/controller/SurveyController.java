@@ -23,7 +23,6 @@ public class SurveyController {
 
     //to save a SurveyModel to db
     @PostMapping("/postSurvey")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public void postSurvey(@RequestParam String name, @RequestParam String [] questionIds){
 
         List<QuestionModel> questions = new ArrayList<>();
@@ -40,27 +39,23 @@ public class SurveyController {
     //to get all of the SurveyModel's that are in the db
     @GetMapping("/getAllSurveys")
     @ResponseBody
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public List<SurveyModel> getAllSurvey(){
         return surveyService.getAllSurvey();
     }
 
     @GetMapping("/getSurvey")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public Optional<SurveyModel> getSurvey(@RequestParam String id){
         return surveyService.getSurvey(id);
     }
 
     @DeleteMapping("/deleteSurveyById")
     @ResponseBody
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public boolean deleteSurveyById(@RequestParam String id){
         return surveyService.deleteSurveyById(id);
     }
 
     //New survey POST form submission
     @PostMapping("/newSurvey")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public RedirectView postNewSurvey(@RequestParam  String name, @RequestParam List<String> checkboxId){
         surveyService.postNewSurvey(name, checkboxId);
         return new RedirectView("/createSurvey.html");
@@ -69,14 +64,12 @@ public class SurveyController {
     //Edit survey retrieving prior survey data
     @GetMapping("/editSurvey")
     @ResponseBody
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public Optional<SurveyModel> editSurvey(@RequestParam String id){
         return surveyService.getSurvey(id);
     }
 
     //Edit Survey
     @PostMapping("/editSurvey")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public RedirectView editSurvey(@RequestParam  String name, @RequestParam List<String> checkboxId, @RequestParam String surveyId){
         surveyService.EditSurvey(surveyId, name, checkboxId);
         return new RedirectView("/createSurvey.html");

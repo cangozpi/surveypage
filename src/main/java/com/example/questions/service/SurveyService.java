@@ -5,6 +5,7 @@ import com.example.questions.dao.SurveyRepository;
 import com.example.questions.model.QuestionModel;
 import com.example.questions.model.SurveyModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,16 +22,19 @@ public class SurveyService {
     QuestionRepository questionRepository;
 
     // to add a single SurveyModel to db
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
     public void postSurvey(SurveyModel surveyModel){
         surveyRepository.save(surveyModel);
     }
 
     //to get All of the available SurveyModels in the db
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
     public List<SurveyModel> getAllSurvey() {
         return surveyRepository.findAll();
 
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
     public Optional<SurveyModel> getSurvey(String id) {
         return surveyRepository.findById(id);
     }
@@ -43,6 +47,7 @@ public class SurveyService {
         return surveyNames;
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
     public boolean deleteSurveyById(String id) {
         if(surveyRepository.findById(id) != null){
             surveyRepository.deleteById(id);
@@ -52,6 +57,7 @@ public class SurveyService {
     }
 
     //handless Save Btn of New Survey Page
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
     public void postNewSurvey(String name, List<String> checkboxIds) {
         List<QuestionModel> questions= new ArrayList<>();
 
@@ -66,6 +72,7 @@ public class SurveyService {
 
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
     public void EditSurvey(String surveyId, String name, List<String> checkboxId) {
         if(surveyRepository.findById(surveyId)!= null){// if it already exists
             List<QuestionModel> questions = new ArrayList<>();

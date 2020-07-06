@@ -20,27 +20,23 @@ public class QuestionController   {
 
     //makes a post request to http://localhost:8080/questions/newQuestion
     @PostMapping("/newQuestion")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public RedirectView postQuestion(@ModelAttribute QuestionModel question){
         questionService.createQuestion(question);
         return new RedirectView("/questions.html");
     }
 
     @GetMapping("/newQuestion")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public List<QuestionModel> getAllQuestions(){
         List<QuestionModel> questions = questionService.getAllQuestions();
         return questions;
     }
 
     @DeleteMapping("/newQuestion")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public void deleteAllQuestions(){
         questionService.deleteAllQuestions();
     }
 
     @DeleteMapping("/deleteById")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public boolean deleteById(@RequestBody String id){
         return questionService.deleteById(id.split("\"")[3].split("\"")[0]);
     }
@@ -48,14 +44,12 @@ public class QuestionController   {
     //Used for sending all of the Object's info to JS for Edit Button Option
     @GetMapping("/getQuestionById")
     @ResponseBody
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public Optional<QuestionModel> getQuestionById(@RequestParam String id){
         return questionService.getQuestionById(id);
     }
 
     //used for UPDATING already existing questionModel Objects
     @PostMapping("/updateById")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public RedirectView updateById(@ModelAttribute QuestionModel question, @RequestParam String id){
         questionService.updateById(question,id);
         return new RedirectView("/questions.html");

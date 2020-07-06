@@ -26,7 +26,6 @@ public class AnsweredSurveyController {
     //to get all of the AnsweredSurveyModel's that are in the db
     @GetMapping("/getAllAnsweredSurveys")
     @ResponseBody
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SURVEYCREATOR')")
     public List<AnsweredSurveyModel> getAllSurvey(){
         return answeredSurveyService.getAllAnsweredSurveys();
     }
