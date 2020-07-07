@@ -87,9 +87,8 @@ public class SurveyController {
     //Edit survey retrieving prior survey data
     @GetMapping("/answerSurvey")
     @ResponseBody
-    public Optional<SurveyModel> answerSurvey(@RequestParam String id, HttpServletRequest request){
-        String userName = request.getUserPrincipal().getName();
-        return surveyService.getSurvey(id, userName);
+    public Optional<SurveyModel> answerSurvey(@RequestParam String id){
+        return surveyService.getSurveyOnlyById(id);
     }
 
 

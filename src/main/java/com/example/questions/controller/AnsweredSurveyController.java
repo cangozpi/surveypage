@@ -19,9 +19,15 @@ public class AnsweredSurveyController {
 
     //Handles post operation of answerSurvey form
     @PostMapping("/saveSurveyResults")
-    public RedirectView saveSurveyResults(@RequestParam Map<String,String> questions, HttpServletRequest request){
-        String userName = request.getUserPrincipal().getName();
-        answeredSurveyService.answeredSurveyModel(questions, userName);
+    public RedirectView saveSurveyResults(@RequestParam Map<String,String> questions, HttpServletRequest request, @RequestParam("userName") String userName){
+
+        if(userName.equals(null)){
+            String userNameRequest = request.getUserPrincipal().getName();
+            answeredSurveyService.answeredSurveyModel(questions, userNameRequest);
+        }else{
+            answeredSurveyService.answeredSurveyModel(questions, userName);
+        }
+
         return new RedirectView("answerSaved.html");
     }
 

@@ -49,9 +49,14 @@ public class QuestionController   {
     //Used for sending all of the Object's info to JS for Edit Button Option
     @GetMapping("/getQuestionById")
     @ResponseBody
-    public Optional<QuestionModel> getQuestionById(@RequestParam String id, HttpServletRequest request){
-        String userName = request.getUserPrincipal().getName();
-        return questionService.getQuestionById(id, userName);
+    public Optional<QuestionModel> getQuestionById(@RequestParam("id") String id, HttpServletRequest request,@RequestParam("userName") String userName){
+        if(userName.equals(null)){
+            String userNameRequest = request.getUserPrincipal().getName();
+            return questionService.getQuestionById(id, userNameRequest);
+        }else {
+            return questionService.getQuestionById(id, userName);
+        }
+
     }
 
     //used for UPDATING already existing questionModel Objects

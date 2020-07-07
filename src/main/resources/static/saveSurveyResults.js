@@ -37,7 +37,7 @@ var renderItemsGivenData = (data) => {
 
 //---------- Age Calculation
         let today = Date.now();
-        let dateBirh = new Date(Number.parseInt(data[i].questions[2].answer.split("-")[0]), Number.parseInt(data[i].questions[2].answer.split("-")[1])-1, Number.parseInt(data[i].questions[2].answer.split("-")[2])).getTime();
+        let dateBirh = new Date(Number.parseInt(data[i].questions[3].answer.split("-")[0]), Number.parseInt(data[i].questions[3].answer.split("-")[1])-1, Number.parseInt(data[i].questions[3].answer.split("-")[2])).getTime();
 
         let ageDif = today-dateBirh;
         let ageDate = new Date(ageDif);
@@ -57,7 +57,7 @@ var renderItemsGivenData = (data) => {
         trElement.appendChild(tdIdElement);
 
         //configure tdEditIconElement accordign to education
-        switch (data[i].questions[1].answer) {
+        switch (data[i].questions[2].answer) {
             case "someHighSchool":tdEditIdconElement.innerHTML="Some High School";
                 break;
             case "GED":tdEditIdconElement.innerHTML="Some High School Diploma/ GED";
@@ -71,7 +71,7 @@ var renderItemsGivenData = (data) => {
             case"mastersDegree":tdEditIdconElement.innerHTML="Master's Degree or Higher";
                 break;
         }
-        tdEditIdconElement.innerHTML=`${data[i].questions[1].answer}`;
+
         trElement.appendChild(tdEditIdconElement);
 
         //configure tdTrashIconElement

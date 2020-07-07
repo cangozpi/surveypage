@@ -44,9 +44,9 @@ public class QuestionService {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
     public Optional<QuestionModel> getQuestionById(String id, String userName){
         QuestionModel q = repository.findById(id).get();
+
         if(userName.equals(q.getUserName())){
             return repository.findById(id);
         }

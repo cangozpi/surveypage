@@ -19,6 +19,18 @@ window.location.href = "/answerSurveyHome.html";
     }).then(res => res.json()).then((data) => {
         const surveyNameTitleElement = document.getElementById('surveyName');
         let questionClassContainer = document.querySelector('.QuestionsContainer');
+        var surveyNameElement = document.createElement('p');
+        var formElement = document.querySelector('form');
+
+        //config formElement action url to include userName as query
+        formElement.action = `/saveSurveyResults?userName=${data.userName}`;
+
+        //handles surveyNameElement configuration
+        surveyNameElement.setAttribute('id', "userName");
+        surveyNameElement.innerText = data.userName;
+        surveyNameElement.style.visibility = "hidden";
+        questionClassContainer.appendChild(surveyNameElement);
+
         //set title Survey name
         surveyNameTitleElement.innerText=data.name;
 
@@ -29,7 +41,7 @@ window.location.href = "/answerSurveyHome.html";
         //inlay Questions into the survey
         for(let i = 0; i < data.questions.length; i++) {
             //retrieve questions itself from db
-            fetch(`/questions/getQuestionById?id=${data.questions[i].id}`,{
+            fetch(`/questions/getQuestionById?id=${data.questions[i].id}&userName=${data.userName}`,{
                 method:'GET'
             }).then(res => res.json()).then((data) => {
                 //check for Question type
@@ -139,7 +151,7 @@ window.location.href = "/answerSurveyHome.html";
             })
         }
 
-    })
+    }).catch((err) => console.log(err))
 
 }
 

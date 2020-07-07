@@ -105,4 +105,8 @@ public class SurveyService {
             System.out.println("something went wrong while editing the survey !");
         }
     }
+
+    public Optional<SurveyModel> getSurveyOnlyById(String id) {
+        return surveyRepository.findById(id);
+    }
 }
