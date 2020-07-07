@@ -3,12 +3,13 @@ package com.example.questions.controller;
 import com.example.questions.model.QuestionModel;
 import com.example.questions.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/questions")
@@ -20,38 +21,44 @@ public class QuestionController   {
 
     //makes a post request to http://localhost:8080/questions/newQuestion
     @PostMapping("/newQuestion")
-    public RedirectView postQuestion(@ModelAttribute QuestionModel question){
-        questionService.createQuestion(question);
+    public RedirectView postQuestion(@ModelAttribute QuestionModel question, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        questionService.createQuestion(question, userName);
         return new RedirectView("/questions.html");
     }
 
     @GetMapping("/newQuestion")
-    public List<QuestionModel> getAllQuestions(){
+    public List<QuestionModel> getAllQuestions(HttpServletRequest request){
         List<QuestionModel> questions = questionService.getAllQuestions();
-        return questions;
+        String userName = request.getUserPrincipal().getName();
+        return questions.stream().filter(questionModel -> questionModel.getUserName().equals(userName)).collect(Collectors.toList());
     }
 
     @DeleteMapping("/newQuestion")
-    public void deleteAllQuestions(){
-        questionService.deleteAllQuestions();
+    public void deleteAllQuestions(HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        questionService.deleteAllQuestions(userName);
     }
 
     @DeleteMapping("/deleteById")
-    public boolean deleteById(@RequestBody String id){
-        return questionService.deleteById(id.split("\"")[3].split("\"")[0]);
+    public boolean deleteById(@RequestBody String id, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        return questionService.deleteById(id.split("\"")[3].split("\"")[0], userName);
     }
 
     //Used for sending all of the Object's info to JS for Edit Button Option
     @GetMapping("/getQuestionById")
     @ResponseBody
-    public Optional<QuestionModel> getQuestionById(@RequestParam String id){
-        return questionService.getQuestionById(id);
+    public Optional<QuestionModel> getQuestionById(@RequestParam String id, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        return questionService.getQuestionById(id, userName);
     }
 
     //used for UPDATING already existing questionModel Objects
     @PostMapping("/updateById")
-    public RedirectView updateById(@ModelAttribute QuestionModel question, @RequestParam String id){
-        questionService.updateById(question,id);
+    public RedirectView updateById(@ModelAttribute QuestionModel question, @RequestParam String id, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        questionService.updateById(question,id, userName);
         return new RedirectView("/questions.html");
     }
 

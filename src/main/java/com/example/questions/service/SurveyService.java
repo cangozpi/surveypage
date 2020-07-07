@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SurveyService {
@@ -23,20 +24,25 @@ public class SurveyService {
 
     // to add a single SurveyModel to db
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
-    public void postSurvey(SurveyModel surveyModel){
+    public void postSurvey(SurveyModel surveyModel, String userName){
+        surveyModel.setUserName(userName);
         surveyRepository.save(surveyModel);
     }
 
     //to get All of the available SurveyModels in the db
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
-    public List<SurveyModel> getAllSurvey() {
-        return surveyRepository.findAll();
+    public List<SurveyModel> getAllSurvey(String userName) {
+        return surveyRepository.findAll().stream().filter(x -> x.getUserName().equals(userName)).collect(Collectors.toList());
 
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
-    public Optional<SurveyModel> getSurvey(String id) {
-        return surveyRepository.findById(id);
+    public Optional<SurveyModel> getSurvey(String id, String userName) {
+        SurveyModel s = surveyRepository.findById(id).get();
+        if(s.getUserName().equals(userName)){
+            return surveyRepository.findById(id);
+        }
+        return null;
     }
 
     public List<String> getAllSurveyNames(List<SurveyModel> surveys){
@@ -48,8 +54,8 @@ public class SurveyService {
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
-    public boolean deleteSurveyById(String id) {
-        if(surveyRepository.findById(id) != null){
+    public boolean deleteSurveyById(String id, String userName) {
+        if(surveyRepository.findById(id) != null && surveyRepository.findById(id).get().getUserName().equals(userName)){
             surveyRepository.deleteById(id);
             return true;
         }
@@ -58,7 +64,7 @@ public class SurveyService {
 
     //handless Save Btn of New Survey Page
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
-    public void postNewSurvey(String name, List<String> checkboxIds) {
+    public void postNewSurvey(String name, List<String> checkboxIds, String userName) {
         List<QuestionModel> questions= new ArrayList<>();
 
         for(String checkboxId : checkboxIds){
@@ -68,13 +74,14 @@ public class SurveyService {
         }
 
         SurveyModel surveyModel = new SurveyModel(name,questions);
+        surveyModel.setUserName(userName);
         surveyRepository.save(surveyModel);
 
     }
 
     @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_SURVEYCREATOR')")
-    public void EditSurvey(String surveyId, String name, List<String> checkboxId) {
-        if(surveyRepository.findById(surveyId)!= null){// if it already exists
+    public void EditSurvey(String surveyId, String name, List<String> checkboxId, String userName) {
+        if(surveyRepository.findById(surveyId)!= null && surveyRepository.findById(surveyId).get().getUserName().equals(userName)){// if it already exists
             List<QuestionModel> questions = new ArrayList<>();
 
             //Form List<QuestionModel> which is to be passed into setQuestions();
@@ -90,6 +97,7 @@ public class SurveyService {
             //create and add new survey
             SurveyModel surveyModel = new SurveyModel(name, questions);
             surveyModel.setId(surveyId);
+            surveyModel.setUserName(userName);
             surveyRepository.save(surveyModel);
 
 

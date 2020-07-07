@@ -19,6 +19,7 @@ public class QuestionModel {
     private Type type;
     private String acceptedValues;
     private String[] options;
+    private String userName;
 
     public QuestionModel(String name, Type type, String acceptedValues){
 
@@ -29,7 +30,15 @@ public class QuestionModel {
            this.acceptedValues = acceptedValues;
             options=this.acceptedValues.split("\\r?\\n");
         }
+    this.userName = "";
+    }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String[] getOptions() {

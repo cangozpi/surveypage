@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +24,7 @@ public class SurveyController {
 
     //to save a SurveyModel to db
     @PostMapping("/postSurvey")
-    public void postSurvey(@RequestParam String name, @RequestParam String [] questionIds){
+    public void postSurvey(@RequestParam String name, @RequestParam String [] questionIds, HttpServletRequest request){
 
         List<QuestionModel> questions = new ArrayList<>();
         for(String questionId : questionIds) {
@@ -33,53 +34,62 @@ public class SurveyController {
         }
 
         SurveyModel survey = new SurveyModel(name, questions);
-        surveyService.postSurvey(survey);
+
+        String userName = request.getUserPrincipal().getName();
+        surveyService.postSurvey(survey, userName);
     }
 
     //to get all of the SurveyModel's that are in the db
     @GetMapping("/getAllSurveys")
     @ResponseBody
-    public List<SurveyModel> getAllSurvey(){
-        return surveyService.getAllSurvey();
+    public List<SurveyModel> getAllSurvey(HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        return surveyService.getAllSurvey(userName);
     }
 
     @GetMapping("/getSurvey")
-    public Optional<SurveyModel> getSurvey(@RequestParam String id){
-        return surveyService.getSurvey(id);
+    public Optional<SurveyModel> getSurvey(@RequestParam String id, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        return surveyService.getSurvey(id, userName);
     }
 
     @DeleteMapping("/deleteSurveyById")
     @ResponseBody
-    public boolean deleteSurveyById(@RequestParam String id){
-        return surveyService.deleteSurveyById(id);
+    public boolean deleteSurveyById(@RequestParam String id, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        return surveyService.deleteSurveyById(id, userName);
     }
 
     //New survey POST form submission
     @PostMapping("/newSurvey")
-    public RedirectView postNewSurvey(@RequestParam  String name, @RequestParam List<String> checkboxId){
-        surveyService.postNewSurvey(name, checkboxId);
+    public RedirectView postNewSurvey(@RequestParam  String name, @RequestParam List<String> checkboxId, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        surveyService.postNewSurvey(name, checkboxId, userName);
         return new RedirectView("/createSurvey.html");
     }
 
     //Edit survey retrieving prior survey data
     @GetMapping("/editSurvey")
     @ResponseBody
-    public Optional<SurveyModel> editSurvey(@RequestParam String id){
-        return surveyService.getSurvey(id);
+    public Optional<SurveyModel> editSurvey(@RequestParam String id, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        return surveyService.getSurvey(id, userName);
     }
 
     //Edit Survey
     @PostMapping("/editSurvey")
-    public RedirectView editSurvey(@RequestParam  String name, @RequestParam List<String> checkboxId, @RequestParam String surveyId){
-        surveyService.EditSurvey(surveyId, name, checkboxId);
+    public RedirectView editSurvey(@RequestParam  String name, @RequestParam List<String> checkboxId, @RequestParam String surveyId, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        surveyService.EditSurvey(surveyId, name, checkboxId, userName);
         return new RedirectView("/createSurvey.html");
     }
 
     //Edit survey retrieving prior survey data
     @GetMapping("/answerSurvey")
     @ResponseBody
-    public Optional<SurveyModel> answerSurvey(@RequestParam String id){
-        return surveyService.getSurvey(id);
+    public Optional<SurveyModel> answerSurvey(@RequestParam String id, HttpServletRequest request){
+        String userName = request.getUserPrincipal().getName();
+        return surveyService.getSurvey(id, userName);
     }
 
 

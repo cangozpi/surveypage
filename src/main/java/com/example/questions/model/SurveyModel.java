@@ -13,11 +13,12 @@ public class SurveyModel {
     private String id;
     private String name;
     private List<QuestionModel> questions;
-
+    private String userName;
 
     public SurveyModel(String name, List<QuestionModel> questions){
         this.name=name;
         this.questions=questions;
+        this.userName = "";
         //Fill questionsList using allcheckedIds array
         /*
         for(int i=0; i< allCheckedIds.length;i++){
@@ -27,6 +28,14 @@ public class SurveyModel {
             }
         }*/
 
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getId() {
