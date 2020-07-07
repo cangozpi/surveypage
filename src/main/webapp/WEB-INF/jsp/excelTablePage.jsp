@@ -24,7 +24,7 @@
             <tr>
                 <td>Survey Name:</td>
 
-                <td>${id.surveyName}</td>
+                <td>${id.surveyNamegit}</td>
 
                 <c:forEach var="question" items="${id.questions}">
 
