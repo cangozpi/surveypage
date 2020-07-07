@@ -11,10 +11,20 @@ public class AnsweredSurveyModel {
 
     private String surveyName;
     private List<QuestionAnswerModel> questions;
+    private String userName;
 
     public AnsweredSurveyModel(String surveyName,  List<QuestionAnswerModel> questions){
         this.surveyName = surveyName;
         this.questions = questions;
+        this.userName = "";
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getId() {
