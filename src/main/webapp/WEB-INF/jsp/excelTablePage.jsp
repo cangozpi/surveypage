@@ -1,6 +1,8 @@
+<%@ page import="com.example.questions.model.AnsweredSurveyModel" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%List<AnsweredSurveyModel> ids = (List<AnsweredSurveyModel> )request.getAttribute("ids");%>
 
 <!doctype html>
 <html lang="en">
@@ -21,13 +23,14 @@
             <tr></tr>
             <tr>
                 <td>Survey Name:</td>
-                <td>${id.surveyName.substring(0,1).toUpperCase()}${id.surveyName.substring(1)}</td>
+
+                <td>${id.surveyName}</td>
 
                 <c:forEach var="question" items="${id.questions}">
 
                     <td></td>
-                    <td>${question.name.substring(0,1).toUpperCase()}${question.name.substring(1)}:</td>
-                    <td>${question.answer.substring(0,1).toUpperCase()}${question.answer.substring(1)}</td>
+                    <td>${question.name}:</td>
+                    <td>${question.answer}</td>
 
                 </c:forEach>
 

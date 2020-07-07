@@ -30,7 +30,7 @@ public class ViewController {
     public String surveyCreationServeJSP(@RequestParam String id, Model model){
         model.addAttribute("surveyName", viewService.getAnsweredSurveyById(id).getSurveyName());
         model.addAttribute("questions", viewService.getAnsweredSurveyById(id).getQuestions());
-        return "surveyCreatindeion";
+        return "surveyCreation";
     }
 
     //Handles excel
