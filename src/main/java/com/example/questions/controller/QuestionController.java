@@ -50,7 +50,7 @@ public class QuestionController   {
     @GetMapping("/getQuestionById")
     @ResponseBody
     public Optional<QuestionModel> getQuestionById(@RequestParam("id") String id, HttpServletRequest request,@RequestParam("userName") String userName){
-        if(userName.equals(null)){
+        if(userName.equals("null")){
             String userNameRequest = request.getUserPrincipal().getName();
             return questionService.getQuestionById(id, userNameRequest);
         }else {

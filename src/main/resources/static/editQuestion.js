@@ -98,7 +98,7 @@ const urlParams = new URLSearchParams(queryString);
 const id = urlParams.get('id');//mongoDB object id
 
 //get object with that id' data
-fetch(`/questions/getQuestionById?id=${id.toString()}`,{
+fetch(`/questions/getQuestionById?id=${id.toString()}&userName=null`,{
     method:"GET"
 }).then(res => res.json()).then((data) => {
     //Work on filling page items from the data from fetch to db
