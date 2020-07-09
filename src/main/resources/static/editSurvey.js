@@ -30,7 +30,7 @@ let loadPrevData = () => {
 
         for(let i=0; i< data.questions.length;i++){
             //fetch questions using id from QuestionRepository
-            fetch(`/questions/getQuestionById?id=${data.questions[i].id}`, {
+            fetch(`/questions/getQuestionById?id=${data.questions[i].id}&userName=null`, {
                 method:'GET'
             }).then(res => res.json()).then((data) => {
                 //adds CheckBoxes

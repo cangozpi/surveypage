@@ -76,7 +76,7 @@ var trashIconClicked = (e)=> {
 
 var editIconClicked = (e) => {
     let rowId = e.target.parentElement.parentElement.id; // MongoDB id of the selected row element
-    window.location.replace(`/editQuestion.html?id=${rowId}&userName="null"`);
+    window.location.replace(`/editQuestion.html?id=${rowId}&userName=null`);
 
 }
 

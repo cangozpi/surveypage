@@ -1,6 +1,7 @@
 package com.example.questions.controller;
 
 import com.example.questions.model.ApplicationUserModel;
+import com.example.questions.model.QuestionAnswerModel;
 import com.example.questions.service.ApplicationUserService;
 import com.example.questions.service.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ViewController {
@@ -29,7 +31,8 @@ public class ViewController {
     @GetMapping("/surveyCreation")
     public String surveyCreationServeJSP(@RequestParam String id, Model model){
         model.addAttribute("surveyName", viewService.getAnsweredSurveyById(id).getSurveyName());
-        model.addAttribute("questions", viewService.getAnsweredSurveyById(id).getQuestions());
+        List<QuestionAnswerModel>questions = viewService.getAnsweredSurveyById(id).getQuestions().stream().filter(x -> (x.getName().equalsIgnoreCase("userName") == false)).collect(Collectors.toList());
+        model.addAttribute("questions", questions);
         return "surveyCreation";
     }
 

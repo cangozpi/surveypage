@@ -58,6 +58,7 @@ public class QuestionService {
         QuestionModel q = repository.findById(id).get();
         if(q.getUserName().equals(userName)){
             repository.deleteById(id);
+            question.setUserName(userName);
             repository.save(question);
         }
     }
