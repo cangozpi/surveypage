@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<% String userFlag = (String)request.getAttribute("userFlag"); %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,6 +15,9 @@
 <div class="container">
     <form class="form-signin" method="POST" action="/register">
         <h2 class="form-signin-heading">Please sign in</h2>
+        <% if(userFlag != null){ %>
+            <h3><%=userFlag %></h3>
+        <% }%>
         <p>
             <label for="username" class="sr-only">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
