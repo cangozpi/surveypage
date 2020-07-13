@@ -66,10 +66,6 @@ public class QuestionController   {
         questionService.updateById(question,id, userName);
         return new RedirectView("/questions.html");
     }
-    @PostMapping("/can")
-    public String deneme(){
-        return "aa";
-    }
 
 
 }
