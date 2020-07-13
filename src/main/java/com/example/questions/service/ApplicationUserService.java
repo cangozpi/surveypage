@@ -46,4 +46,8 @@ public class ApplicationUserService implements UserDetailsService {
     public void deleteUserByName(String userName) {
         applicationUserRepository.deleteByUserName(userName);
     }
+
+    public ApplicationUserModel getUserByName(String userName){
+        return applicationUserRepository.findByUserName(userName);
+    }
 }

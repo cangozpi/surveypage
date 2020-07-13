@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
@@ -15,9 +16,15 @@ public class ApplicationUserController {
     ApplicationUserService applicationUserService;
 
     @PostMapping("/register")
-    public RedirectView registerNewUser(@RequestParam String username, @RequestParam String password){
-        applicationUserService.saveNewUser(username, password);
-        return new RedirectView("/");
+    public ModelAndView registerNewUser(@RequestParam String username, @RequestParam String password, ModelAndView mav){
+        if(applicationUserService.getUserByName(username)== null){
+            applicationUserService.saveNewUser(username, password);
+            mav.setViewName("/index");
+            return mav;
+        }
+        mav.setViewName("/signin");
+        mav.addObject("userFlag","User Name Already Exists !");
+        return mav;
     }
 
     @PostMapping("/deleteUser")
@@ -25,6 +32,7 @@ public class ApplicationUserController {
     public void deleteUserByName(@RequestParam String username){
         applicationUserService.deleteUserByName(username);
     }
+
 
 
 }
