@@ -262,4 +262,6 @@ header a {
     color: #f5ab1f;
 }
 
-
+button {
+    border: none !important;
+}
