@@ -17,39 +17,42 @@
 
     <% if(user == null){ %>
 
-    <a href="/register" id="singIn">Sign in</a>
     <a href="/login" id="login">Login</a>
+    <a href="/register" id="singIn">Sign in</a>
+
 
     <% } %>
 
-    <% if(user != null) { %>
-        <a href="/logout" id="logOut">LogOut</a>
-    <% } %>
-
-<%-- if(user != null && user.getRole().equals("ROLE_ADMIN")) { %>
+    <%-- if(user != null && user.getRole().equals("ROLE_ADMIN")) { %>
         <input type="button" value="Admin button" />
     <% } --%>
 
     <c:if test="${not empty user  and user.role == 'ROLE_ADMIN'}">
         <a href="/adminConsole" id="adminBtn">Admin Console</a>
     </c:if>
+
+
+    <% if(user != null) { %>
+        <a href="/logout" id="logOut">LogOut</a>
+    <% } %>
+
+
 </header>
-<div class="welcome-page">
-    <div class="welcome-script">
-                <span class="welcome-border">
-                    <h1>Pampering Forms</h1>
-                    <h2>fast and easy way to pander your banal instincts</h2>
-                </span>
-    </div>
+
+<div class="mainContainer">
+    <div class="pattern"></div>
+    <h1 class="Pampering-Forms">Pampering Forms</h1>
+    <h2 class="welcome-text">Fast and easy way to pander your banal instincts </h2>
 
     <div class="options">
-        <h2 class="questions"><a href="questions.html">Questions</a></h2>
-        <h2 class="survey-create"><a href="createSurvey.html">Survey Creation</a></h2>
-        <h2 class="answer-survey"><a href="answerSurvey.html?home=true">Answer Survey</a></h2>
-        <h2 class="survey-report"><a href="saveSurveyResults.html">Survey Report</a></h2>
+        <button class="questions"><a href="questions.html" class="Questions">Questions</a></button>
+        <button class="survey-create"><a href="createSurvey.html" class="Survey-Creation">Survey Creation</a></button>
+        <button class="answer-survey"><a href="answerSurvey.html?home=true" class="Answer-Survey">Answer Survey</a></button>
+        <button class="survey-report"><a href="saveSurveyResults.html" class="Survey-Report">Survey Report</a></button>
     </div>
 
 </div>
+
 
 <script src="app.js"></script>
 
