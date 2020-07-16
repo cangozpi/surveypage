@@ -6,10 +6,22 @@
     <title>Get Started With Surveys</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style/createSurvey.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+<header>
+    <a class="Questions" href="questions.html">Questions</a>
+    <a href="createSurvey.html" class="Survey-Creation">Survey Creation</a>
+    <a href="answerSurvey.html?home=true" class="Answer-Survey">Answer Survey</a>
+    <a href="saveSurveyResults.html" class="Survey-Report">Survey Report</a>
+    <a href="/logout" class = "Log-Out">Log Out</a>
+</header>
+
+
 <h1>Surveys</h1>
-<input type="submit" id="new" value="New" onclick="window.location='newSurvey.html';">
+
 <table>
     <tr>
         <th id="checkbox"><i class="fa fa-check" aria-hidden="true"></i></th>
@@ -22,6 +34,9 @@
 </table>
 
 <button type="button" id="deleteAllBtn">Delete All </button>
+
+<input type="submit" id="new" value="Add +" onclick="window.location='newSurvey.html';">
+
 
 <script src="createSurvey.js"></script>
 
