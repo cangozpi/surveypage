@@ -5,12 +5,14 @@
     border-radius: 0.6vw;
     font-family: sans-serif;
     outline: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
     width: 100vw;
     height: 100vh;
-    background-image: url("/images/newQuestionBackground.jpg");
+    background-image: url("/images/patern@3x.png");
+    background-size: cover;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -20,19 +22,22 @@ body{
 }
 
 .all {
-    
-    background-color: rgba(110, 107, 99, 0.452);
     height: 100vh;
 }
 
 h1{
-    font-size: 4vw;
     position: absolute;
     width: 100vw;
     margin-left: auto;
-    padding-top: 10vh;
-    font-family: 'Holtwood One SC', serif;
-    letter-spacing: 13px;
+    padding-top: 15vh;
+
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.52;
+    letter-spacing: normal;
+    color: #707070;
 }
 
 .form {
@@ -59,6 +64,16 @@ form label{
     margin-left: 0px;
     margin: 4vh 0vw;
     align-self: center;
+
+    height: 23px;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    text-align: center;
+    color: #b2afaf;
 }
 
 input, select, textarea {
@@ -76,17 +91,14 @@ textarea input{
 }
 
 textarea:hover, select:hover, input:hover{
-    background-color: rgba(168, 130, 5, 0.411);
-    box-shadow: 3px 3px black;
+    box-shadow: 1px 1px black;
 }
 option{
     font-style: italic;
 }
 
 input[type=submit]:hover {
-    background-color:rgb(144, 144, 150);
-    box-shadow: 1px 2px rgb(41, 41, 43);
-    color: whitesmoke;
+    box-shadow: 1px 1px rgb(41, 41, 43);
 }
 
 input[type=submit]{
@@ -94,7 +106,13 @@ input[type=submit]{
     position: absolute;
     bottom: 13vh;
     right: 11vw;
-    width: 12vw;
+
+    width: 160px;
+    height: 45px;
+    border-radius: 10px;
+    border: solid 1px #8bc9fd;
+    background-color: #8bc9ff;
+
 }
 
 textarea{
