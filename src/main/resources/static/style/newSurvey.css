@@ -2,31 +2,37 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
-    background-color: rgba(3, 61, 71, 0.315);
+    background-image: url("/images/patern@3x.png");
+    background-size: cover;
 }
 
 .contentBody {
-    width: 100vw;
-    height: 100vh;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
 }
 
 h1 {
-    margin: 10vh 17vw;
     display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-top: 120px;
 }
 
 input[type=submit] {
-    position: absolute;
-    display: inline-block;
-    top: 0;
-    right: 0;
-    margin: 10vh 15vw;
-    width: 15vw;
-    min-height: 40px;
-    height: 8vh;
+    width: 160px;
+    height: 45px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(255, 255, 255, 0.16);
+    border: solid 1px #8bc9fd;
+    background-color: #8bc9ff;
+    float: right;
+
 }
 
 .name, .questions, .selectedQuestions{
