@@ -6,19 +6,32 @@
      <title>Get Started With Questions</title>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link rel="stylesheet" href="style/questions.css">
+     <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
  </head>
  <body>
+
+    <header>
+        <a class="Questions" href="/">Questions</a>
+        <a href="/surveyCreation" class="Survey-Creation">Survey Creation</a>
+        <a href="/answerSurvey" class="Answer-Survey">Answer Survey</a>
+        <a href="/surveyReport.html" class="Survey-Report">Survey Report</a>
+        <a href="/logout" class = "Log-Out">Log Out</a>
+    </header>
+
     <h1>Questions</h1> 
 
     <table>
         <tr>
-            <th id="id">id</th>
-            <th id="name">name</th>
+            <th id="id">Id</th>
+            <th id="name">Name</th>
             <th id="delete"></th>
-            <th id="edit"> <input type="submit" id="new" value="New" onclick="window.location='newQuestion.html';"></th>
+            <th id="edit"> </th>
         </tr>
 
     </table>
+
+    <input type="submit" id="new" value="New" onclick="window.location='newQuestion.html';">
+
 
     <input type="submit" id="submitQuestions" value="Save">
 

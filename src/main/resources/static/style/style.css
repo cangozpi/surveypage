@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 
@@ -167,6 +168,10 @@ header a {
     color: #8bc9fd;
 }
 
+#singIn:hover {
+    color: #f5ab1f;
+}
+
 .pattern {
     width: 100%;
     height: 100%;
@@ -196,6 +201,10 @@ header a {
     color: #8bc9fd;
 }
 
+#login:hover {
+    color: #f5ab1f;
+}
+
 #logOut{
     width: 50px;
     font-family: 'Poppins', sans-serif;
@@ -210,6 +219,10 @@ header a {
     margin-right: 30px;
 }
 
+#logOut:hover {
+    color: #f5ab1f;
+}
+
 #adminBtn {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -221,6 +234,10 @@ header a {
     text-align: center;
     color: #8bc9fd;
     margin-right: 20px;
+}
+
+#adminBtn:hover {
+    color: #f5ab1f;
 }
 
 /* Hovering Buttons*/
